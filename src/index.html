@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">Memo</div>
+    <nav>
+      <button class="nav-item active" data-filter="all">全部</button>
+      <button class="nav-item" data-filter="todo">待办</button>
+      <button class="nav-item" data-filter="doing">进行中</button>
+      <button class="nav-item" data-filter="done">已完成</button>
+      <button class="nav-item" data-filter="archived">搁置</button>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="view-switch">
+        <button class="view-btn active" data-view="list">列表</button>
+        <button class="view-btn" data-view="board">看板</button>
+      </div>
+      <input id="search" class="search" placeholder="搜索便签…">
+      <button id="new-note" class="primary-btn">+ 新建</button>
+    </header>
+
+    <section id="list-view" class="list-view"></section>
+
+    <section id="board-view" class="board-view hidden">
+      <div class="board-col" data-status="todo"><h3>待办</h3><div class="col-body"></div></div>
+      <div class="board-col" data-status="doing"><h3>进行中</h3><div class="col-body"></div></div>
+      <div class="board-col" data-status="done"><h3>已完成</h3><div class="col-body"></div></div>
+      <div class="board-col" data-status="archived"><h3>搁置</h3><div class="col-body"></div></div>
+    </section>
+  </main>
+
+  <aside id="editor" class="editor hidden">
+    <div class="editor-head">
+      <input id="edit-title" class="edit-title" placeholder="标题">
+      <button id="close-editor" class="icon-btn">✕</button>
+    </div>
+    <div class="editor-meta">
+      <select id="edit-status">
+        <option value="todo">待办</option>
+        <option value="doing">进行中</option>
+        <option value="done">已完成</option>
+        <option value="archived">搁置</option>
+      </select>
+      <select id="edit-priority">
+        <option value="none">无优先级</option>
+        <option value="high">高</option>
+        <option value="medium">中</option>
+        <option value="low">低</option>
+      </select>
+      <input id="edit-due" type="datetime-local" class="due-input">
+    </div>
+    <input id="edit-tags" class="edit-tags" placeholder="标签，用逗号分隔">
+    <textarea id="edit-content" class="edit-content" placeholder="正文…"></textarea>
+    <div class="checklist-head">
+      <span>清单</span>
+      <button id="add-check" class="ghost-btn">+ 添加项</button>
+    </div>
+    <div id="checklist" class="checklist"></div>
+    <div class="editor-foot">
+      <span id="progress-text" class="progress-text"></span>
+      <button id="delete-note" class="danger-btn">删除</button>
+    </div>
+  </aside>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
